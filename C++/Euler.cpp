@@ -9,7 +9,7 @@ using namespace std;
 	order ODE
 */
 vector<double> Euler::solver(double(*fptr)(double t0, double f0), double t0, 
-	                 double f0, double h, double t, int maxIter, double tol) {
+	                 double f0, double h, double t, int maxIter = 500, double tol = 1e-4) {
 
 	vector<double> yvalues(maxIter);
 	yvalues[0] = f0 ;
