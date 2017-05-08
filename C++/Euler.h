@@ -14,7 +14,7 @@ using namespace std;
 class Euler {
 public:
 	vector<double> solver(double(*)(double, double), double, double ,
-		double , double, int , double);
+		double , double, int max = 500, double tol = 1e-4);
 	// ctor
 	Euler();
 
