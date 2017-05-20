@@ -2,6 +2,8 @@
     Newton-Raphson implementation
     x_n+1 = x_n + f(x_n)/f'(x_n)
 """
+import time
+import matplotlib.pyplot as plt
 from Nu_Meth import *
 class Newton_Raphson(Nu_Meth):
     _deriv_ptr = None # pointer to derivative function
@@ -25,6 +27,8 @@ class Newton_Raphson(Nu_Meth):
         """
           method to perform the calculation          
         """
+        soln = [t_0]
+        
         if(self._fptr is None):
             raise Exception("fptr is not specified")
         if(self._deriv_ptr is None):
@@ -34,6 +38,14 @@ class Newton_Raphson(Nu_Meth):
             t_n = t_0 - self._fptr(t_0)/self._deriv_ptr(t_0)
             t_0 = t_n
 
+""" Not Complete! Still not what we want"""
+            soln.append(t_0)
+            plt.plot([i for i in range(i+2)],soln,"ro")
+            plt.show(block = False)
+
+            time.sleep(2)
+            plt.close()
+            
             if(abs(self._fptr(t_0)) < self._tol):
                 break
         return (t_0, i+1)

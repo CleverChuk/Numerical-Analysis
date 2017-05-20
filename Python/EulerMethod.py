@@ -32,6 +32,8 @@
              y_n+1 = y_n + h * f(y_n,t_n)    
 """
 import math as m
+import time
+import matplotlib.pyplot as plt
 class Euler:
     """
       Implementation of the Euler method for 1st order ODE
@@ -58,16 +60,17 @@ class Euler:
     """
        mutators
     """
-    def set_fptr(fptr):
+  
+    def set_fptr(self,fptr):
         self._fptr = fptr
 
-    def set_step_size(h):
+    def set_step_size(self,h):
         self._step_size = h
 
-    def set_tol(tol):
+    def set_tol(self,tol):
         self._tol = tol
 
-    def set_maxIter(mI):
+    def set_maxIter(self,mI):
         self._max_iter = mI;
 
     def execute(self, y_0, t_0, t):
@@ -77,6 +80,7 @@ class Euler:
         """
         soln = [y_0]
         lIter = 0
+        fig = None
         if(self._fptr is None):
             raise Exception("Must specify function pointer. fptr cannot be None")
         for i in range(self._max_iter):
@@ -89,8 +93,15 @@ class Euler:
             soln.append(y_n)
             y_0 = y_n
             t_0 += self._step_size
-            lIter = i+1            
+            lIter = i+1
 
+"""         Not final! Still not what we want!"""
+            plt.plot([i for i in range(i+2)],soln,"ro")
+            plt.show(block = False)
+            time.sleep(2)
+            plt.close();
+
+            
         return soln[-1],lIter
             
             
@@ -109,13 +120,14 @@ h = 0.001
 mIter = 50000
 tol = 0.1
 
-##solver = Euler()
-##soln = solver.execute(y_0, t_0, t)
+solver = Euler(equation)
+solver.set_tol(tol)
+soln = solver.execute(y_0, t_0, t)
 
 ##for i in soln:
 ##    print(i)
         
-print(soln)        
+     
         
 
 
