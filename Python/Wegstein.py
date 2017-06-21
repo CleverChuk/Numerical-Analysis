@@ -10,15 +10,12 @@
 from Nu_Meth import *
 
 class Wegstein(Nu_Meth):
-    def __init__(self, fptr = None, maxIter = 500, tol = 0.00001):
+    def __init__(self, fptr, maxIter = 500, tol = 0.00001):
         self._fptr = fptr
         self._max_iter = maxIter
         self._tol = tol
     
     def execute(self, x0, x):
-        if(self._fptr is None):
-            raise Exception("fptr cannot be None")
-
         for i in range(self._max_iter):
 
             x_n = (x0 * self._fptr(x) - x * self._fptr(x0)) / (x0 - self._fptr(x0) - x + self._fptr(x))
