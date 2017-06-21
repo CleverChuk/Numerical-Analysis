@@ -7,7 +7,7 @@
 from Nu_Meth import *
 class Secant_Method(Nu_Meth):
 
-    def __init__(self, fptr = None, max_iter = 500, tol = 0.0001):
+    def __init__(self, fptr, max_iter = 500, tol = 0.0001):
         self._fptr = fptr     
         self._max_iter = max_iter
         self._tol = tol
@@ -16,9 +16,6 @@ class Secant_Method(Nu_Meth):
     """
        mutators
     """
-    def set_fptr(fptr):
-        self._fptr = fptr
-
     def set_step_size(h):
         self._step_size = h
 
@@ -27,9 +24,6 @@ class Secant_Method(Nu_Meth):
 
     def set_maxIter(mI):
         self._max_iter = mI;
-
-    def set_fptr(dptr):
-        self._deriv_ptr = dptr
 
     def execute(self, x_0, x):
         """
