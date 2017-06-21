@@ -50,7 +50,7 @@ class Euler:
          max_iter: maximum iterations to perform
          tol: Error tolerance between the actual 
     """
-    def __init__(self, fptr = None, step_size = 0.1, max_iter = 500, tol = 0.0001):
+    def __init__(self, fptr, step_size = 0.1, max_iter = 500, tol = 0.0001):
         self._fptr = fptr
         self._step_size = step_size
         self._max_iter = max_iter
@@ -60,9 +60,6 @@ class Euler:
     """
        mutators
     """
-  
-    def set_fptr(self,fptr):
-        self._fptr = fptr
 
     def set_step_size(self,h):
         self._step_size = h
@@ -81,8 +78,7 @@ class Euler:
         soln = [y_0]
         lIter = 0
         fig = None
-        if(self._fptr is None):
-            raise Exception("Must specify function pointer. fptr cannot be None")
+        
         for i in range(self._max_iter):
             """" Eulers formula """
             y_n = y_0 + self._step_size * self._fptr(y_0,t_0)
