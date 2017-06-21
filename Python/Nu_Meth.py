@@ -6,7 +6,6 @@
 class Nu_Meth:
     _max_iter = 500  # maximum iteriation before the solver quits
     _tol = 0.0001 # tolerance
-    _fptr = None
 
     def __init__():
         pass
@@ -19,6 +18,3 @@ class Nu_Meth:
 
     def set_maxIter(mIter):
         self._max_iter = mIter
-
-    def set_fptr(fptr):
-        self._fptr = fptr
