@@ -5,10 +5,8 @@
 import time
 import matplotlib.pyplot as plt
 from Nu_Meth import *
-class Newton_Raphson(Nu_Meth):
-    _deriv_ptr = None # pointer to derivative function
-    
-    def __init__(self, fptr = None,deriv_ptr = None, max_iter = 500, tol = 0.0001):
+class Newton_Raphson(Nu_Meth):    
+    def __init__(self, fptr, deriv_ptr, max_iter = 500, tol = 0.0001):
         self._fptr = fptr
         self._deriv_ptr = deriv_ptr
         
@@ -20,20 +18,12 @@ class Newton_Raphson(Nu_Meth):
        mutators
     """
 
-    def set_derivFptr(dptr):
-        self._deriv_ptr = dptr
-
     def execute(self, t_0):
         """
           method to perform the calculation          
         """
         soln = [t_0]
         
-        if(self._fptr is None):
-            raise Exception("fptr is not specified")
-        if(self._deriv_ptr is None):
-            raise Exception("deriv_ptr is not specified")
-
         for i in range(self._max_iter):
             t_n = t_0 - self._fptr(t_0)/self._deriv_ptr(t_0)
             t_0 = t_n
