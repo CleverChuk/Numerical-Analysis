@@ -12,7 +12,7 @@
 """
 from Nu_Meth import *
 class Bisection_Method(Nu_Meth):
-    def __init__(self,fptr = None, max_iter = 500, tol = 0.0001):       
+    def __init__(self,fptr, max_iter = 500, tol = 0.0001):       
         self._fptr = fptr
         self._max_iter = max_iter
         
@@ -21,10 +21,7 @@ class Bisection_Method(Nu_Meth):
     def execute(self, a,b):
         """
             Takes two numbers
-        """
-        if(self._fptr is None):
-            raise Exception("fptr cannot be None")
-            
+        """            
 
         for i in range(self._max_iter):
             c = (a + b)/2
