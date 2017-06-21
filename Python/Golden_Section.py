@@ -7,7 +7,7 @@ from Nu_Meth import Nu_Meth
 
 class GoldenSection(Nu_Meth):
     gR = 1.618
-    def __init__(self, fptr = None, maxIter = 500, tol = 0.0001):
+    def __init__(self, fptr, maxIter = 500, tol = 0.0001):
         self._fptr = fptr
         self._max_iter = maxIter
         self._tol = tol
